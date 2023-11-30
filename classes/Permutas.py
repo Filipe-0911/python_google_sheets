@@ -15,7 +15,9 @@ class Permuta(AbstractCrud):
 
     def inserir(self):
         lista = self.lerArquivo()
+        print(lista)
         produtoDuplicado = filter(lambda p: p[0] == self.data_da_troca, lista)
+        # produtoDuplicado = filter(lambda p: p['data_da_troca'] == self.data_da_troca, lista)
 
         if len(list(produtoDuplicado)):
             print()

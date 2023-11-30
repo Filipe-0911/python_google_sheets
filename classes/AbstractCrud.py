@@ -33,16 +33,7 @@ class AbstractCrud(ABC):
         except FileNotFoundError:
             lista = []
 
-        seu_identificador = novo_item[0]
-
-        item_existente = next((item for item in lista if item[0] == seu_identificador), None)
-
-        if item_existente:
-
-            lista = [novo_item if item[0] == seu_identificador else item for item in lista]
-        else:
-
-            lista.append(novo_item)
+        lista.append(novo_item)
 
         with open(arquivo_path, 'w') as file:
             json.dump(lista, file, indent=4)
