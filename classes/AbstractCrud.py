@@ -64,16 +64,16 @@ class AbstractCrud(ABC):
 
     @classmethod
     def lerArquivo(cls, item = None):
-        db = cls.arquivo 
-        banco = os.path.join(os.path.dirname(__file__), db)
+        db = cls.arquivo
+        banco = os.path.abspath(os.path.join(os.path.dirname(os.path.dirname(__file__)), "db", db))
         
         try:
             with open(banco) as file:
                 lista =  json.load(file)
                 print(lista)
 
-                return lista[item] if isinstance(item, int) else lista
+                return lista[item] if isinstance(item, str) else lista
 
         except Exception:
-                # print("erro")
+                
                 return []

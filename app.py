@@ -18,4 +18,4 @@ def ler_permutas():
     lista = Permuta.lerArquivo()
     print(lista)
 
-ler_permutas()
+# ler_permutas()

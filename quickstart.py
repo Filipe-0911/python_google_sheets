@@ -61,11 +61,6 @@ def main():
     if not values:
       print("No data found.")
       return
-    
-    """for permuta in values:
-      troca = Permuta(permuta[0],permuta[1],permuta[2],permuta[3],permuta[4],permuta[5], permuta[6])
-      print(troca.detalhar())
-      troca.inserir()"""
 
     return values
     
