@@ -1,4 +1,5 @@
 import os.path
+import os
 
 from google.auth.transport.requests import Request
 from google.oauth2.credentials import Credentials
@@ -11,7 +12,10 @@ from googleapiclient.errors import HttpError
 SCOPES = ["https://www.googleapis.com/auth/spreadsheets.readonly"]
 
 # The ID and range of a sample spreadsheet.
-SAMPLE_SPREADSHEET_ID = "1hyFV6qwi6M52yyGCOqIB5FZD2CMwLc6KiFOP7Iwy0Os"
+
+# SAMPLE_SPREADSHEET_ID = "1hyFV6qwi6M52yyGCOqIB5FZD2CMwLc6KiFOP7Iwy0Os"
+SAMPLE_SPREADSHEET_ID = str(os.getenv('SECRET_KEY'))
+
 SAMPLE_RANGE_NAME = "permutas!A:Z"
 
 
