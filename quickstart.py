@@ -1,6 +1,7 @@
 import os.path
 import os
 
+from dotenv import load_dotenv
 from google.auth.transport.requests import Request
 from google.oauth2.credentials import Credentials
 from google_auth_oauthlib.flow import InstalledAppFlow
@@ -13,10 +14,12 @@ SCOPES = ["https://www.googleapis.com/auth/spreadsheets.readonly"]
 
 # The ID and range of a sample spreadsheet.
 
-# SAMPLE_SPREADSHEET_ID = "1hyFV6qwi6M52yyGCOqIB5FZD2CMwLc6KiFOP7Iwy0Os"
-SAMPLE_SPREADSHEET_ID = str(os.getenv('SECRET_KEY'))
 
-SAMPLE_RANGE_NAME = "permutas!A:Z"
+# SAMPLE_SPREADSHEET_ID = "1hyFV6qwi6M52yyGCOqIB5FZD2CMwLc6KiFOP7Iwy0Os"
+load_dotenv()
+SAMPLE_SPREADSHEET_ID = str(os.getenv('SECRET_KEY'))
+# SAMPLE_RANGE_NAME = "permutas!A:Z"
+SAMPLE_RANGE_NAME = str(os.getenv('LOCAL_LEITURA'))
 
 
 def main():
@@ -27,19 +30,20 @@ def main():
   # The file token.json stores the user's access and refresh tokens, and is
   # created automatically when the authorization flow completes for the first
   # time.
-  if os.path.exists("token.json"):
-    creds = Credentials.from_authorized_user_file("token.json", SCOPES)
+  token_path = os.path.join(os.path.dirname(__file__), "auth", "token.json")
+  if os.path.exists(token_path):
+    creds = Credentials.from_authorized_user_file(token_path, SCOPES)
+
   # If there are no (valid) credentials available, let the user log in.
   if not creds or not creds.valid:
     if creds and creds.expired and creds.refresh_token:
       creds.refresh(Request())
     else:
       flow = InstalledAppFlow.from_client_secrets_file(
-          os.path.join(os.path.dirname(__file__), "credentials.json"), SCOPES
+           os.path.join(os.path.dirname(__file__), "auth", "credentials.json"), SCOPES
       )
       creds = flow.run_local_server(port=0)
-    # Save the credentials for the next run
-    with open("token.json", "w") as token:
+    with open(os.path.join(os.path.dirname(__file__), "auth", "token.json"), "w") as token:
       token.write(creds.to_json())
 
   try:
