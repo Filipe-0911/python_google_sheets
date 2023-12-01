@@ -4,7 +4,7 @@
 > Após isto, pegue o id da planilha e crie um arquivo .env com o seguinte contúdo:
 ```
 SECRET_KEY = ID_DA_PLANILHA
-LOCAL_LEITURA = nome_planilha!A:Z
+LOCAL_LEITURA = aba_da_planilha!A:Z
 ```
 > Salve este arquivo na pasta Raiz do projeto.
 
