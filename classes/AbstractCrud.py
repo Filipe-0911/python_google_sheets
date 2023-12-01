@@ -8,20 +8,20 @@ class AbstractCrud(ABC):
         return self.__dict__
     
     def inserir(self):
-        lista = self.lerArquivo()
+        lista = self.ler_arquivo()
         lista.append(self.detalhar())
-        self.__gravarArquivo(lista)
+        self.__gravar_arquivo(lista)
 
         print('Registro Cadastrado com sucesso')
 
     def alterar(self, item):
-        lista = self.lerArquivo()
+        lista = self.ler_arquivo()
         lista[item] = self.detalhar()
-        self.__gravarArquivo(lista)
+        self.__gravar_arquivo(lista)
 
         print('Registro Alterado com sucesso')
 
-    def __gravarArquivo(self, novo_item):
+    def __gravar_arquivo(self, novo_item):
         db_folder = "db"
         db_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", db_folder))
         os.makedirs(db_path, exist_ok=True)
@@ -45,7 +45,7 @@ class AbstractCrud(ABC):
 
     @classmethod
     def excluir(cls, item):
-        lista = cls.lerArquivo()
+        lista = cls.ler_arquivo()
         del lista[item]
 
         db = cls.arquivo
@@ -55,13 +55,13 @@ class AbstractCrud(ABC):
              json.dump(lista, file, indent=4)
 
     @classmethod
-    def listarTodos(cls):
-        lista = cls.lerArquivo()
+    def listar_todos(cls):
+        lista = cls.ler_arquivo()
         for i, p in enumerate(lista):
             print(f"{i} - {p}")
 
     @classmethod
-    def lerArquivo(cls, item = None):
+    def ler_arquivo(cls, item = None):
         db = cls.arquivo
         banco = os.path.abspath(os.path.join(os.path.dirname(os.path.dirname(__file__)), "db", db))
         

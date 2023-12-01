@@ -12,7 +12,7 @@ def insere_permutas(lista):
         troca.inserir()
 
 def ler_permutas():
-    lista = Permuta.listarTodos()
+    lista = Permuta.listar_todos()
     print(lista)
 
 def excluir_permuta(selecionado):
@@ -21,7 +21,7 @@ def excluir_permuta(selecionado):
 
 def alterar_permuta(selecionado, item_alterar, novo_valor):
     item_selecionado = int(selecionado)
-    item = Permuta.lerArquivo(item_selecionado)
+    item = Permuta.ler_arquivo(item_selecionado)
     print(item)
 
     match item_alterar:
