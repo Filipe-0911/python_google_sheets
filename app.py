@@ -20,7 +20,6 @@ def excluir_permuta(selecionado):
     Permuta.excluir(item_selecionado)
 
 def alterar_permuta(selecionado, item_alterar, novo_valor):
-
     item_selecionado = int(selecionado)
     item = Permuta.lerArquivo(item_selecionado)
     print(item)
