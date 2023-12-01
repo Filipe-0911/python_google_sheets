@@ -6,6 +6,7 @@
 SECRET_KEY = ID_DA_PLANILHA
 LOCAL_LEITURA = nome_planilha!A:Z
 ```
+> Salve este arquivo na pasta Raiz do projeto.
 
 ### Guia de início rápido do Python
 ### Crie um aplicativo de linha de comando em Python que faça solicitações à API Google Sheets.
