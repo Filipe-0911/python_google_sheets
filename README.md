@@ -1,9 +1,9 @@
 [Início rápido do Python no Google Sheets](https://developers.google.com/sheets/api/quickstart/python?hl=pt-br)
 
-#Guia de início rápido do Python
-##Os guias de início rápido explicam como configurar e executar um app que chama uma API Google Workspace.
-##Os guias de início rápido do Google Workspace usam as bibliotecas de cliente da API para processar alguns detalhes do fluxo de autenticação e autorização. Recomendamos que você use bibliotecas de cliente para seus próprios aplicativos. Neste guia de início rápido, usamos uma abordagem de autenticação simplificada, apropriada para um ambiente de teste. Para um ambiente de produção, recomendamos aprender sobre autenticação e autorização antes de escolher as credenciais de acesso adequadas para seu aplicativo.
-###Crie um aplicativo de linha de comando em Python que faça solicitações à API Google Sheets.
+# Guia de início rápido do Python
+## Os guias de início rápido explicam como configurar e executar um app que chama uma API Google Workspace.
+## Os guias de início rápido do Google Workspace usam as bibliotecas de cliente da API para processar alguns detalhes do fluxo de autenticação e autorização. Recomendamos que você use bibliotecas de cliente para seus próprios aplicativos. Neste guia de início rápido, usamos uma abordagem de autenticação simplificada, apropriada para um ambiente de teste. Para um ambiente de produção, recomendamos aprender sobre autenticação e autorização antes de escolher as credenciais de acesso adequadas para seu aplicativo.
+### Crie um aplicativo de linha de comando em Python que faça solicitações à API Google Sheets.
 
 Objetivos:
 <ul>
@@ -15,7 +15,7 @@ Objetivos:
 </ul>
 
 
->Para executar este guia de início rápido, você precisa dos seguintes pré-requisitos:
+> Para executar este guia de início rápido, você precisa dos seguintes pré-requisitos:
 
 1. Python 3.10.7 ou superior
 2. A ferramenta de gerenciamento de pacotes pip
@@ -26,15 +26,15 @@ Objetivos:
 
 Ativar a API
 Antes de usar as APIs do Google, elas precisam ser ativadas em um projeto do Google Cloud. É possível ativar uma ou mais APIs em um único projeto do Google Cloud.
-No console do Google Cloud, ative a API Google Sheets.
+> No console do Google Cloud, ative a API Google Sheets.
 
-Ativar a API
+[Ativar a API](https://console.cloud.google.com/flows/enableapi?apiid=sheets.googleapis.com&hl=pt-br)
 
 Configurar a tela de permissão OAuth
 Se você estiver usando um novo projeto do Google Cloud para concluir este guia de início rápido, configure a tela de permissão OAuth e adicione-se como um usuário de teste. Se você já concluiu essa etapa no projeto do Cloud, pule para a próxima seção.
 
 No console do Google Cloud, acesse Menu menu > APIs e serviços > Tela de permissão OAuth.
-Acessar a tela de permissão OAuth
+[Acessar a tela de permissão OAuth](https://console.cloud.google.com/apis/credentials/consent?hl=pt-br)
 
 Selecione o tipo de usuário do app e clique em Criar.
 Preencha o formulário de registro do app e clique em Salvar e continuar.
@@ -47,23 +47,23 @@ Analise o resumo de registro do seu app. Para fazer mudanças, clique em Editar.
 Autorizar credenciais de um aplicativo para computador
 Para fazer a autenticação como usuário final e acessar os dados do usuário no app, crie um ou mais IDs do cliente OAuth 2.0. Um ID do cliente é usado para identificar um único app nos servidores OAuth do Google. Se o app for executado em várias plataformas, você precisará criar um ID do cliente separado para cada uma delas.
 No console do Google Cloud, acesse Menu menu > APIs e serviços > Credenciais.
-Ir para Credenciais
+[Ir para Credenciais](https://console.cloud.google.com/apis/credentials/consent?hl=pt-br)
 
-Clique em Criar credenciais > ID do cliente OAuth.
-Clique em Tipo de aplicativo > App para computador.
-No campo Nome, digite um nome para a credencial. Esse nome só aparece no console do Google Cloud.
-Clique em Criar. A tela do cliente OAuth criado é exibida, mostrando seu novo ID e chave secreta do cliente.
-Clique em OK. A credencial recém-criada aparece em IDs do cliente OAuth 2.0.
-Salve o arquivo JSON salvo como credentials.json e mova o arquivo para o diretório de trabalho.
-Instalar a biblioteca de cliente do Google
-Instale a biblioteca de cliente do Google para Python:
+* Clique em Criar credenciais > ID do cliente OAuth.
+* Clique em Tipo de aplicativo > App para computador.
+* No campo Nome, digite um nome para a credencial. Esse nome só aparece no console do Google Cloud.
+* Clique em Criar. A tela do cliente OAuth criado é exibida, mostrando seu novo ID e chave secreta do cliente.
+* Clique em OK. A credencial recém-criada aparece em IDs do cliente OAuth 2.0.
+* Salve o arquivo JSON salvo como credentials.json e mova o arquivo para o diretório de trabalho.
+* Instalar a biblioteca de cliente do Google
+* Instale a biblioteca de cliente do Google para Python:
 
 `pip install --upgrade google-api-python-client google-auth-httplib2 google-auth-oauthlib`
 Configurar o exemplo
-No diretório de trabalho, crie um arquivo chamado quickstart.py.
-Inclua o seguinte código em quickstart.py:
 
-sheets/quickstart/quickstart.pyVer no GitHub
+1. No diretório de trabalho, crie um arquivo chamado quickstart.py.
+2. Inclua o seguinte código em quickstart.py:
+
 ```
 import os.path
 
