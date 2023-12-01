@@ -144,7 +144,7 @@ Seu aplicativo em Python é executado e chama a API Google Sheets.
 As informações de autorização são armazenadas no sistema de arquivos. Portanto, na próxima vez que você executar o exemplo de código, a autorização não será solicitada.
 
 Próximas etapas
-Resolver problemas de autenticação e autorização
-Documentação de referência da API Sheets
-Documentação do cliente de APIs do Google para Python
-Documentação do PyDoc da API Google Sheets
+1. Resolver problemas de autenticação e autorização
+2. Documentação de referência da API Sheets
+3. Documentação do cliente de APIs do Google para Python
+4. Documentação do PyDoc da API Google Sheets
