@@ -15,17 +15,14 @@ Objetivos:
 </ul>
 
 
+>Para executar este guia de início rápido, você precisa dos seguintes pré-requisitos:
 
-
-
-Para executar este guia de início rápido, você precisa dos seguintes pré-requisitos:
-
-Python 3.10.7 ou superior
-A ferramenta de gerenciamento de pacotes pip
-Um projeto do Google Cloud.
-Uma Conta do Google
-configure seu ambiente
-Para concluir este guia de início rápido, configure seu ambiente.
+1. Python 3.10.7 ou superior
+2. A ferramenta de gerenciamento de pacotes pip
+3. Um projeto do Google Cloud.
+4. Uma Conta do Google
+5. configure seu ambiente
+6. Para concluir este guia de início rápido, configure seu ambiente.
 
 Ativar a API
 Antes de usar as APIs do Google, elas precisam ser ativadas em um projeto do Google Cloud. É possível ativar uma ou mais APIs em um único projeto do Google Cloud.
