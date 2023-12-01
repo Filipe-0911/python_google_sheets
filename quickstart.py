@@ -14,13 +14,9 @@ SCOPES = ["https://www.googleapis.com/auth/spreadsheets.readonly"]
 
 # The ID and range of a sample spreadsheet.
 
-
-# SAMPLE_SPREADSHEET_ID = "1hyFV6qwi6M52yyGCOqIB5FZD2CMwLc6KiFOP7Iwy0Os"
 load_dotenv()
 SAMPLE_SPREADSHEET_ID = str(os.getenv('SECRET_KEY'))
-# SAMPLE_RANGE_NAME = "permutas!A:Z"
 SAMPLE_RANGE_NAME = str(os.getenv('LOCAL_LEITURA'))
-
 
 def main():
   """Shows basic usage of the Sheets API.
