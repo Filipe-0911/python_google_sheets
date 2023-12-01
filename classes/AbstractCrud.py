@@ -37,7 +37,6 @@ class AbstractCrud(ABC):
         if isinstance(lista, list):
             lista.clear()
 
-        print(novo_item)
         lista = novo_item
 
         with open(arquivo_path, 'w') as file:
@@ -48,8 +47,11 @@ class AbstractCrud(ABC):
     def excluir(cls, item):
         lista = cls.lerArquivo()
         del lista[item]
+
+        db = cls.arquivo
+        banco = os.path.abspath(os.path.join(os.path.dirname(os.path.dirname(__file__)), "db", db))
         
-        with open(cls.arquivo, 'w') as file:
+        with open(banco, 'w') as file:
              json.dump(lista, file, indent=4)
 
     @classmethod
@@ -67,7 +69,7 @@ class AbstractCrud(ABC):
             with open(banco) as file:
                 lista =  json.load(file)
                 
-                return lista[item] if isinstance(item, str) else lista
+                return lista[item] if isinstance(item, int) else lista
 
         except Exception:
                 
