@@ -41,7 +41,7 @@ Antes de usar as APIs do Google, elas precisam ser ativadas em um projeto do Goo
 Configurar a tela de permissão OAuth
 Se você estiver usando um novo projeto do Google Cloud para concluir este guia de início rápido, configure a tela de permissão OAuth e adicione-se como um usuário de teste. Se você já concluiu essa etapa no projeto do Cloud, pule para a próxima seção.
 
-No console do Google Cloud, acesse Menu menu > APIs e serviços > Tela de permissão OAuth.
+> No console do Google Cloud, acesse Menu menu > APIs e serviços > Tela de permissão OAuth.
 [Acessar a tela de permissão OAuth](https://console.cloud.google.com/apis/credentials/consent?hl=pt-br)
 
 Selecione o tipo de usuário do app e clique em Criar.
@@ -54,7 +54,7 @@ Insira seu endereço de e-mail e outros usuários de teste autorizados, depois c
 Analise o resumo de registro do seu app. Para fazer mudanças, clique em Editar. Se o registro do app parecer OK, clique em Voltar ao painel.
 Autorizar credenciais de um aplicativo para computador
 Para fazer a autenticação como usuário final e acessar os dados do usuário no app, crie um ou mais IDs do cliente OAuth 2.0. Um ID do cliente é usado para identificar um único app nos servidores OAuth do Google. Se o app for executado em várias plataformas, você precisará criar um ID do cliente separado para cada uma delas.
-No console do Google Cloud, acesse Menu menu > APIs e serviços > Credenciais.
+> No console do Google Cloud, acesse Menu menu > APIs e serviços > Credenciais.
 [Ir para Credenciais](https://console.cloud.google.com/apis/credentials/consent?hl=pt-br)
 
 * Clique em Criar credenciais > ID do cliente OAuth.
