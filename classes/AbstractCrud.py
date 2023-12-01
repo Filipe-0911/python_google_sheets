@@ -30,10 +30,15 @@ class AbstractCrud(ABC):
         try:
             with open(arquivo_path, 'r') as file:
                 lista = json.load(file)
+    
         except FileNotFoundError:
             lista = []
 
-        lista.append(novo_item)
+        if isinstance(lista, list):
+            lista.clear()
+
+        print(novo_item)
+        lista = novo_item
 
         with open(arquivo_path, 'w') as file:
             json.dump(lista, file, indent=4)
@@ -61,8 +66,7 @@ class AbstractCrud(ABC):
         try:
             with open(banco) as file:
                 lista =  json.load(file)
-                print(lista)
-
+                
                 return lista[item] if isinstance(item, str) else lista
 
         except Exception:
