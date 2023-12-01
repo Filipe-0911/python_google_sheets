@@ -1,3 +1,5 @@
+### Projeto criado nos padrões do PEP8. [O que é PEP8?](https://wiki.python.org.br/GuiaDeEstilo)
+
 [Início rápido do Python no Google Sheets](https://developers.google.com/sheets/api/quickstart/python?hl=pt-br)
 
 > Será necessário realizar todos os procedimentos que estão no link acima para obter os arquivos credentials.json, token.json
