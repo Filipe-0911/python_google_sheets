@@ -1,8 +1,13 @@
 [Início rápido do Python no Google Sheets](https://developers.google.com/sheets/api/quickstart/python?hl=pt-br)
 
-# Guia de início rápido do Python
-## Os guias de início rápido explicam como configurar e executar um app que chama uma API Google Workspace.
-## Os guias de início rápido do Google Workspace usam as bibliotecas de cliente da API para processar alguns detalhes do fluxo de autenticação e autorização. Recomendamos que você use bibliotecas de cliente para seus próprios aplicativos. Neste guia de início rápido, usamos uma abordagem de autenticação simplificada, apropriada para um ambiente de teste. Para um ambiente de produção, recomendamos aprender sobre autenticação e autorização antes de escolher as credenciais de acesso adequadas para seu aplicativo.
+> Será necessário realizar todos os procedimentos que estão no link acima para obter os arquivos credentials.json, token.json
+> Após isto, pegue o id da planilha e crie um arquivo .env com o seguinte contúdo:
+```
+SECRET_KEY = ID_DA_PLANILHA
+LOCAL_LEITURA = nome_planilha!A:Z
+```
+
+### Guia de início rápido do Python
 ### Crie um aplicativo de linha de comando em Python que faça solicitações à API Google Sheets.
 
 Objetivos:
