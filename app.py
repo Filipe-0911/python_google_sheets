@@ -1,18 +1,17 @@
 import quickstart as main
 from classes.Permutas import Permuta
 
-LISTA_PERMUTAS = main.main()
-del LISTA_PERMUTAS[0]
+def get_gs_data():
+    LISTA_PERMUTAS = main.main()
+    del LISTA_PERMUTAS[0]
 
-def insere_permutas(lista):
-    for permuta in lista:
+    for permuta in LISTA_PERMUTAS:
         troca = Permuta(permuta[0],permuta[1],permuta[3],permuta[2],permuta[4],permuta[6], permuta[5])
-        teste = troca.detalhar()
         troca.inserir()
 
 def ler_permutas():
     lista = Permuta.listar_todos()
-    print(lista)
+    return lista
 
 def excluir_permuta(selecionado):
     item_selecionado = int(selecionado)
@@ -49,7 +48,7 @@ def alterar_permuta(selecionado, item_alterar, novo_valor):
     permuta.alterar(item_selecionado)
 
 
-# insere_permutas(LISTA_PERMUTAS)
+# get_gs_data()
 # ler_permutas()
 # excluir_permuta(0)
 # alterar_permuta(0, 'proponente', 'SO GODOY')
