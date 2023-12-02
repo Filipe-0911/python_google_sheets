@@ -7,7 +7,7 @@ from ttkthemes import ThemedStyle
 from ttkthemes import ThemedTk
 
 def on_button_click():
-    # get_gs_data()
+    get_gs_data()
 
     permutas = ler_permutas()
     texto_permutas = []
@@ -35,8 +35,8 @@ style = ThemedStyle(root)
 style.set_theme("blue")
 
 root.title("Permutas preenchidas")
-largura_tela = 450
-altura_tela = 800
+largura_tela = 800
+altura_tela = 1000
 
 root.geometry(f"{largura_tela}x{altura_tela}")
 
@@ -49,7 +49,7 @@ label.pack(pady=10)
 button = Button(root, text="Obter permutas", command=on_button_click)
 button.pack(pady=10)
 
-label2 = Label(root, text='', wraplength=420, justify="center", font=("Helvetica", 10))
+label2 = Label(root, text='', wraplength=700, justify="center", font=("Helvetica", 10))
 label2.pack(pady=10)
 
 root.mainloop()
