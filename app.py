@@ -3,7 +3,6 @@ from classes.Permutas import Permuta
 
 LISTA_PERMUTAS = main.main()
 del LISTA_PERMUTAS[0]
-index = 2
 
 def insere_permutas(lista):
     for permuta in lista:
