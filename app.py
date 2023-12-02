@@ -3,7 +3,7 @@ from classes.Permutas import Permuta
 
 LISTA_PERMUTAS = main.main()
 del LISTA_PERMUTAS[0]
-index = 2
+
 
 def insere_permutas(lista):
     for permuta in lista:
@@ -53,4 +53,4 @@ def alterar_permuta(selecionado, item_alterar, novo_valor):
 # insere_permutas(LISTA_PERMUTAS)
 # ler_permutas()
 # excluir_permuta(0)
-# alterar_permuta(0, 'proponente', '2S ANDRADE')
+# alterar_permuta(0, 'proponente', 'SO GODOY')
