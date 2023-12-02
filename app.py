@@ -10,7 +10,7 @@ def get_gs_data():
         troca.inserir()
 
 def ler_permutas():
-    lista = Permuta.listar_todos()
+    lista = Permuta.ler_arquivo()
     return lista
 
 def excluir_permuta(selecionado):
