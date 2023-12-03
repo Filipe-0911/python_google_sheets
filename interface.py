@@ -30,7 +30,11 @@ def on_button_click():
     label2['text'] = texto_completo
 
     
-root = tk.Tk()
+root = Tk()
+
+style = ThemedStyle(root)
+style.set_theme("blue")
+
 root.title("Permutas preenchidas")
 largura_tela = 800
 altura_tela = 1000
@@ -41,12 +45,12 @@ label_text = tk.StringVar()
 label_text.set("Permutas")
 
 label = Label(root, textvariable=label_text, wraplength=300, justify="center", font=("Helvetica", 12))
-label.grid(row=0, column=0, columnspan=3, pady=10)
+label.pack(pady=10)
 
-button = Button(root, text="Obter permutas", command=lambda: on_button_click())
-button.grid(row=1, column=0, columnspan=3, pady=10)
+button = Button(root, text="Obter permutas", command=on_button_click)
+button.pack(pady=10)
 
 label2 = Label(root, text='', wraplength=700, justify="center", font=("Helvetica", 10))
-label2.grid(row=6, column=0, columnspan=3, pady=10)
+label2.pack(pady=10)
 
 root.mainloop()
