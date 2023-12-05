@@ -23,10 +23,10 @@ cursor.execute("""
     )
 """)
 
-cursor.execute("""
-    INSERT INTO permutas (id, data_da_troca, proponente, proponente_sai_do_turno, proponente_entra_no_turno, proposto, proposto_sai_do_turno, proposto_entra_no_turno)
-    VALUES (?, ?, ?, ?, ?, ?, ?, ?)
-""", (1, "30/10/2023 12:02:13", "SO GODOY", "06/11/2023", "07/11/2023", "SO WAGNER", "07/11/2023", "06/11/2023"))
+cursor.execute('''
+    INSERT INTO permutas (data_da_troca, proponente, proponente_sai_do_turno, proponente_entra_no_turno, proposto, proposto_sai_do_turno, proposto_entra_no_turno)
+    VALUES (?, ?, ?, ?, ?, ?, ?)
+''', ("30/10/2023 12:02:13", "SO GODOY", "06/11/2023", "07/11/2023", "SO WAGNER", "07/11/2023", "06/11/2023"))
 
 
 cursor.execute("SELECT * FROM permutas")

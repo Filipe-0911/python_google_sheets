@@ -1,11 +1,9 @@
 import tkinter as tk
-import os.path
 from app import *
 from tkinter import ttk
 from tkinter import *
 from ttkthemes import ThemedStyle
 from ttkthemes import ThemedTk
-from classes.Tabela import TabelaTkinter
 
 def on_button_click():
     get_gs_data()
