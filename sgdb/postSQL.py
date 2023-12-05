@@ -23,7 +23,6 @@ cursor.execute("""
     )
 """)
 
-
 cursor.execute("""
     INSERT INTO permutas (id, data_da_troca, proponente, proponente_sai_do_turno, proponente_entra_no_turno, proposto, proposto_sai_do_turno, proposto_entra_no_turno)
     VALUES (?, ?, ?, ?, ?, ?, ?, ?)
