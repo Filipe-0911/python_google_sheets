@@ -63,3 +63,8 @@ def alterar_sdia(selecionado, item_alterar, novo_valor):
     
     item_para_alterar = PermutasCrud()
     item_para_alterar.atualizar_registro(item_selecionado, dicionario, 'sdia', 'protocolo')
+
+
+# ler_sdias('b184b36c')
+# excluir_sdia('b184b36c')
+# alterar_sdia('b184b36c', 'localidade', 'SBYS')
