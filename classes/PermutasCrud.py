@@ -70,8 +70,6 @@ class PermutasCrud:
         ''')
         self.conn.commit()
 
-        print("Tablea criada com sucesso!")
-
     def inserir_registro(self, permuta):
         self.cursor.execute('''
             INSERT INTO permutas (data_da_troca, proponente, proponente_sai_do_turno, proponente_entra_no_turno, proposto, proposto_sai_do_turno, proposto_entra_no_turno)
@@ -82,43 +80,51 @@ class PermutasCrud:
     def inserir_sdia(self, sdia):
         self.cursor.execute('''
             INSERT INTO sdia (protocolo, data_insercao, data_recebimento, operador, localidade, quem_originou, assunto, data_efetivacao, esclarecimento, telefone, email, retornou_ica, observacoes, a1, a2, a3, a4, a5, a6, a7, a8, a9)
-            VALUES (?, ?, ?, ?, ?, ?, ?,?, ?, ?, ?, ?, ?, ?,?, ?, ?, ?, ?, ?, ?,?)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
         ''', (sdia['protocolo'], sdia['data_insercao'], sdia['data_recebimento'], sdia['operador'], sdia['localidade'], sdia['quem_originou'], sdia['assunto'], sdia['data_efetivacao'], sdia['esclarecimento'], sdia['telefone'], sdia['email'], sdia['retornou_ica'], sdia['observacoes'], sdia['a1'], sdia['a2'], sdia['a3'], sdia['a4'], sdia['a5'], sdia['a6'], sdia['a7'], sdia['a8'], sdia['a9']))
         self.conn.commit()
 
-    def consultar_permutas(self, id=None):
-        if id:
-            self.cursor.execute('SELECT * FROM permutas WHERE protocolo=?', (id,))
+    def consultar_permutas(self, data_da_troca=None):
+        if data_da_troca:
+            self.cursor.execute('SELECT * FROM permutas WHERE data_da_troca=?', (data_da_troca,))
         else: self.cursor.execute('SELECT * FROM permutas')
 
         return self.cursor.fetchall()
     
     def consultar_sdias(self, protocolo=None):
+        print(protocolo)
         if protocolo:
             self.cursor.execute('SELECT * FROM sdia WHERE protocolo=?', (protocolo,))
-        else: self.cursor.execute('SELECT * FROM sdia')
+        else: 
+            self.cursor.execute('SELECT * FROM sdia')
 
         return self.cursor.fetchall()
 
-    def atualizar_registro(self, registro_id, modificacoes):
+    def atualizar_registro(self, registro_id, modificacoes, banco, parametro_busca):
+        
         if not modificacoes:
             print("Nada a ser atualizado.")
             return
+        print(modificacoes)
 
         campos_atualizar = ', '.join(f"{campo} = ?" for campo in modificacoes.keys())
+        print(registro_id)
         valores_atualizar = tuple(modificacoes.values())
+        print(valores_atualizar)
 
         self.cursor.execute(f'''
-            UPDATE permutas
+            UPDATE {banco}
             SET {campos_atualizar}
-            WHERE id=?
+            WHERE {parametro_busca}=?
         ''', valores_atualizar + (registro_id,))
         self.conn.commit()
 
-    def excluir_registro(self, registro_id):
-        self.cursor.execute('DELETE FROM permutas WHERE id=?', (registro_id,))
+    def excluir_registro(self, id):
+        self.cursor.execute('DELETE FROM permutas WHERE id=?', (id,))
+        print("Permuta excluído do banco.")
         self.conn.commit()
 
     def excluir_sdia(self, registro_id):
-        self.cursor.execute('DELETE FROM sdia WHERE id=?', (registro_id,))
+        self.cursor.execute('DELETE FROM sdia WHERE protocolo=?', (registro_id,))
+        print("SDIA excluída do banco.")
         self.conn.commit()

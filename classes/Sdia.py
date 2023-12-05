@@ -1,6 +1,7 @@
 from classes.AbstractCrud import AbstractCrud
+from classes.PermutasCrud import PermutasCrud
 
-class Sdia(AbstractCrud):
+class Sdia(AbstractCrud, PermutasCrud):
 
     arquivo = 'sdia.json'
     banco = 'data.db'
@@ -34,10 +35,15 @@ class Sdia(AbstractCrud):
 
 
     def inserir(self):
-        lista = self.ler_arquivo()
-        produtoDuplicado = filter(lambda p: p["protocolo"] == self.protocolo, lista)
+        protocolo = self.protocolo
 
-        if len(list(produtoDuplicado)):
+        banco_permutas = PermutasCrud(self.banco)
+        banco_permutas.conectar_banco()
+        banco_permutas.criar_tabela()
+
+        produtoDuplicado = banco_permutas.consultar_sdias(protocolo)
+
+        if produtoDuplicado:
             print()
             print('Já existe um produto com esse código!')
         else: 

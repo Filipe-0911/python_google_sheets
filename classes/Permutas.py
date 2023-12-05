@@ -1,6 +1,7 @@
 from classes.AbstractCrud import AbstractCrud
+from classes.PermutasCrud import PermutasCrud
 
-class Permuta(AbstractCrud):
+class Permuta(AbstractCrud, PermutasCrud):
 
     arquivo = 'permutas.json'
     banco = 'data.db'
@@ -15,10 +16,15 @@ class Permuta(AbstractCrud):
         self.proposto_entra_no_turno = proposto_entra_no_turno
 
     def inserir(self):
-        lista = self.ler_arquivo()
-        produtoDuplicado = filter(lambda p: p["data_da_troca"] == self.data_da_troca, lista)
+        filtrar_por = self.data_da_troca
 
-        if len(list(produtoDuplicado)):
+        banco_permutas = PermutasCrud(self.banco)
+        banco_permutas.conectar_banco()
+        banco_permutas.criar_tabela()
+
+        produtoDuplicado = banco_permutas.consultar_permutas(filtrar_por)
+
+        if produtoDuplicado:
             print()
             print('Já existe um produto com esse código!')
         else: 

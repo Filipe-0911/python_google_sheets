@@ -1,25 +1,31 @@
 import tkinter as tk
 from app import *
+from classes.PermutasCrud import PermutasCrud
 from tkinter import ttk
 from tkinter import *
 from ttkthemes import ThemedStyle
 from ttkthemes import ThemedTk
 
 def on_button_click():
-    get_gs_data()
+    get_permutas()
 
-    permutas = ler_permutas()
+    conecta_permuta = PermutasCrud()
+    conecta_permuta.conectar_banco()
+    permutas = conecta_permuta.consultar_permutas()
+
+    print(permutas)
+
     texto_permutas = []
 
     for permuta in permutas:
         texto_permuta = (
-            f"Data da troca: {permuta['data_da_troca']} - "
-            f"Proponente: {permuta['proponente']} - "
-            f"Sai do turno: {permuta['proponente_sai_do_turno']} - "
-            f"Entra no turno: {permuta['proponente_entra_no_turno']} - "
-            f"Proposto: {permuta['proposto']} - "
-            f"Sai do turno: {permuta['proposto_sai_do_turno']} - "
-            f"Entra no turno: {permuta['proposto_entra_no_turno']} - "
+            f"Data da troca: {permuta[1]} - "
+            f"Proponente: {permuta[2]} - "
+            f"Sai do turno: {permuta[3]} - "
+            f"Entra no turno: {permuta[4]} - "
+            f"Proposto: {permuta[5]} - "
+            f"Sai do turno: {permuta[6]} - "
+            f"Entra no turno: {permuta[7]} - "
         )
 
         texto_permutas.append(texto_permuta)
@@ -27,6 +33,11 @@ def on_button_click():
     texto_completo = '\n\n'.join(texto_permutas)
     label2['text'] = texto_completo
 
+
+def on_button_sdia_click():
+    get_sdias()
+
+    label2['text'] = 'SDIAS cadastrados no banco!'
     
 root = Tk()
 
@@ -46,6 +57,9 @@ label = Label(root, textvariable=label_text, wraplength=300, justify="center", f
 label.pack(pady=10)
 
 button = Button(root, text="Obter permutas", command=on_button_click)
+button.pack(pady=10)
+
+button = Button(root, text="Obter SDIA", command=on_button_sdia_click)
 button.pack(pady=10)
 
 label2 = Label(root, text='', wraplength=700, justify="center", font=("Helvetica", 10))

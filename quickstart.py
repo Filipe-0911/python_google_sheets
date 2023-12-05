@@ -12,9 +12,10 @@ SCOPES = ["https://www.googleapis.com/auth/spreadsheets.readonly"]
 
 load_dotenv()
 SAMPLE_SPREADSHEET_ID = str(os.getenv('SECRET_KEY'))
-SAMPLE_RANGE_NAME = str(os.getenv('LOCAL_LEITURA'))
 
-def main():
+
+def main(local_leitura):
+  SAMPLE_RANGE_NAME = local_leitura
   creds = None
 
   token_path = os.path.join(os.path.dirname(__file__), "auth", "token.json")

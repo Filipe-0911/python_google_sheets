@@ -3,72 +3,63 @@ from classes.Permutas import Permuta
 from classes.Sdia import Sdia
 from classes.PermutasCrud import PermutasCrud
 
-def get_gs_data2():
-    LISTA_PERMUTAS = main.main()
-    del LISTA_PERMUTAS[0]
+def get_sdias():
+    lista_sdias = main.main('bancoAIM!A:BZ')  
+    del lista_sdias[0]
+    del lista_sdias[0]
 
-    for sdia in LISTA_PERMUTAS:
+    for sdia in lista_sdias:
         dados_sdia = Sdia(sdia[0],sdia[1],sdia[2],sdia[6],
-                     sdia[7],sdia[8],sdia[9], sdia[10],
+                     sdia[7],  sdia[8],  sdia[9],  sdia[10],
                      sdia[12], sdia[15], sdia[18], sdia[21],
                      sdia[23], sdia[24], sdia[25], sdia[26],
                      sdia[27], sdia[28], sdia[29], sdia[30], 
                      sdia[31], sdia[32])
         
-        dados_sdia.inserir()
+        try: dados_sdia.inserir()
+        except Exception as err: print(err)
 
-def get_gs_data():
-    LISTA_PERMUTAS = main.main()
+def get_permutas():
+    LISTA_PERMUTAS = main.main('permutas!A:G')
     del LISTA_PERMUTAS[0]
 
     for permuta in LISTA_PERMUTAS:
         troca = Permuta(permuta[0],permuta[1],permuta[3],permuta[2],permuta[4],permuta[6], permuta[5])
-        troca.inserir()
+        
+        try: troca.inserir()
+        except Exception as err: print(err)
 
-def ler_permutas():
-    lista = Permuta.ler_arquivo()
-    return lista
+def ler_permutas(id=None):
+    permutas = PermutasCrud().consultar_permutas(id)
+    print(permutas)
+
+    return permutas
+
+def ler_sdias(id=None):
+    permutas = PermutasCrud().consultar_sdias(id)
+    print(permutas)
+
+    return permutas
 
 def excluir_permuta(selecionado):
     item_selecionado = int(selecionado)
-    Permuta.excluir(item_selecionado)
+    permuta = PermutasCrud()
+    permuta.excluir_registro(item_selecionado)
+
+def excluir_sdia(selecionado):
+    sdia = PermutasCrud()
+    sdia.excluir_sdia(selecionado)
 
 def alterar_permuta(selecionado, item_alterar, novo_valor):
     item_selecionado = int(selecionado)
-    item = Permuta.ler_arquivo(item_selecionado)
-    print(item)
-
-    match item_alterar:
-        case 'data_da_troca' : 
-            permuta = Permuta(novo_valor, item['proponente'], item['proponente_sai_do_turno'], item['proponente_entra_no_turno'], item['proposto'], item['proposto_sai_do_turno'], item['proposto_entra_no_turno'])
-
-        case 'proponente' : 
-            permuta = Permuta(item['data_da_troca'], novo_valor, item['proponente_sai_do_turno'], item['proponente_entra_no_turno'], item['proposto'], item['proposto_sai_do_turno'], item['proposto_entra_no_turno'])
-
-        case 'proponente_sai_do_turno' : 
-            permuta = Permuta(item['data_da_troca'], item['proponente'], novo_valor, item['proponente_entra_no_turno'], item['proposto'], item['proposto_sai_do_turno'], item['proposto_entra_no_turno'])
-
-        case 'proponente_entra_no_turno' : 
-            permuta = Permuta(item['data_da_troca'], item['proponente'], item['proponente_sai_do_turno'], novo_valor, item['proposto'], item['proposto_sai_do_turno'], item['proposto_entra_no_turno'])
-
-        case 'proposto' : 
-            permuta = Permuta(item['data_da_troca'], item['proponente'], item['proponente_sai_do_turno'], item['proponente_entra_no_turno'], novo_valor, item['proposto_sai_do_turno'], item['proposto_entra_no_turno'])
-
-        case 'proposto_sai_do_turno' : 
-            permuta = Permuta(item['data_da_troca'], item['proponente'], item['proponente_sai_do_turno'], item['proponente_entra_no_turno'], item['proposto'], novo_valor, item['proposto_entra_no_turno'])
-
-        case 'proposto_entra_no_turno' : 
-            permuta = Permuta(item['data_da_troca'], item['proponente'], item['proponente_sai_do_turno'], item['proponente_entra_no_turno'], item['proposto'], item['proposto_sai_do_turno'], novo_valor)
-
+    dicionario = {item_alterar: novo_valor}
     
-    permuta.alterar(item_selecionado)
+    item_para_alterar = PermutasCrud()
+    item_para_alterar.atualizar_registro(item_selecionado, dicionario, 'permutas', 'id')
 
-
-# get_gs_data()
-# ler_permutas()
-# excluir_permuta(0)
-# alterar_permuta(0, 'proponente', 'SO GODOY')
-
-sdias = PermutasCrud().consultar_sdias('a16b4e6e')
-
-print(sdias)
+def alterar_sdia(selecionado, item_alterar, novo_valor):
+    item_selecionado = str(selecionado)
+    dicionario = {item_alterar: novo_valor}
+    
+    item_para_alterar = PermutasCrud()
+    item_para_alterar.atualizar_registro(item_selecionado, dicionario, 'sdia', 'protocolo')
