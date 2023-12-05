@@ -1,5 +1,20 @@
 import quickstart as main
 from classes.Permutas import Permuta
+from classes.Sdia import Sdia
+
+def get_gs_data2():
+    LISTA_PERMUTAS = main.main()
+    del LISTA_PERMUTAS[0]
+
+    for sdia in LISTA_PERMUTAS:
+        dados_sdia = Sdia(sdia[0],sdia[1],sdia[2],sdia[6],
+                     sdia[7],sdia[8],sdia[9], sdia[10],
+                     sdia[12], sdia[15], sdia[18], sdia[21],
+                     sdia[23], sdia[24], sdia[25], sdia[26],
+                     sdia[27], sdia[28], sdia[29], sdia[30], 
+                     sdia[31], sdia[32])
+        
+        dados_sdia.inserir()
 
 def get_gs_data():
     LISTA_PERMUTAS = main.main()
@@ -52,3 +67,4 @@ def alterar_permuta(selecionado, item_alterar, novo_valor):
 # ler_permutas()
 # excluir_permuta(0)
 # alterar_permuta(0, 'proponente', 'SO GODOY')
+get_gs_data2()

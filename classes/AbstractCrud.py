@@ -28,14 +28,21 @@ class AbstractCrud(ABC, PermutasCrud):
         db_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", db_folder))
         os.makedirs(db_path, exist_ok=True)
         arquivo_path = os.path.join(db_path, self.arquivo)
+        
+        if self.arquivo == 'permutas.json':
+            banco = PermutasCrud(self.banco)
+            banco.conectar_banco()
+            banco.criar_tabela()
+            banco.inserir_registro(self.detalhar())
+            banco.desconectar_banco()
 
-        banco = PermutasCrud(self.banco)
-        banco.conectar_banco()
-        banco.criar_tabela()
-        banco.inserir_registro(self.detalhar())
-        banco.desconectar_banco()
-
-        # print(self.detalhar())
+        if self.arquivo == 'sdia.json':
+            banco = PermutasCrud(self.banco)
+            banco.conectar_banco()
+            banco.criar_tabela()
+            banco.inserir_sdia(self.detalhar())
+            banco.desconectar_banco()
+        
 
         try:
             with open(arquivo_path, 'r') as file:

@@ -3,7 +3,7 @@ from classes.AbstractCrud import AbstractCrud
 class Permuta(AbstractCrud):
 
     arquivo = 'permutas.json'
-    banco = 'permutas.db'
+    banco = 'data.db'
     
     def __init__(self, data_da_troca, proponente, proponente_entra_no_turno, proponente_sai_do_turno, proposto, proposto_entra_no_turno, proposto_sai_do_turno):
         self.data_da_troca = data_da_troca
