@@ -1,6 +1,7 @@
 import quickstart as main
 from classes.Permutas import Permuta
 from classes.Sdia import Sdia
+from classes.PermutasCrud import PermutasCrud
 
 def get_gs_data2():
     LISTA_PERMUTAS = main.main()
@@ -67,4 +68,7 @@ def alterar_permuta(selecionado, item_alterar, novo_valor):
 # ler_permutas()
 # excluir_permuta(0)
 # alterar_permuta(0, 'proponente', 'SO GODOY')
-get_gs_data2()
+
+sdias = PermutasCrud().consultar_sdias('a16b4e6e')
+
+print(sdias)

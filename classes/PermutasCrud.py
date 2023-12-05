@@ -86,12 +86,18 @@ class PermutasCrud:
         ''', (sdia['protocolo'], sdia['data_insercao'], sdia['data_recebimento'], sdia['operador'], sdia['localidade'], sdia['quem_originou'], sdia['assunto'], sdia['data_efetivacao'], sdia['esclarecimento'], sdia['telefone'], sdia['email'], sdia['retornou_ica'], sdia['observacoes'], sdia['a1'], sdia['a2'], sdia['a3'], sdia['a4'], sdia['a5'], sdia['a6'], sdia['a7'], sdia['a8'], sdia['a9']))
         self.conn.commit()
 
-    def consultar_permutas(self):
-        self.cursor.execute('SELECT * FROM permutas')
+    def consultar_permutas(self, id=None):
+        if id:
+            self.cursor.execute('SELECT * FROM permutas WHERE protocolo=?', (id,))
+        else: self.cursor.execute('SELECT * FROM permutas')
+
         return self.cursor.fetchall()
     
-    def consultar_sdias(self):
-        self.cursor.execute('SELECT * FROM sdia')
+    def consultar_sdias(self, protocolo=None):
+        if protocolo:
+            self.cursor.execute('SELECT * FROM sdia WHERE protocolo=?', (protocolo,))
+        else: self.cursor.execute('SELECT * FROM sdia')
+
         return self.cursor.fetchall()
 
     def atualizar_registro(self, registro_id, modificacoes):
