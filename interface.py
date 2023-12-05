@@ -4,7 +4,7 @@ from classes.PermutasCrud import PermutasCrud
 from tkinter import ttk
 from tkinter import *
 from ttkthemes import ThemedStyle
-from ttkthemes import ThemedTk
+#from ttkthemes import ThemedTk
 
 def on_button_click():
     get_permutas()
