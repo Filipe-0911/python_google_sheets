@@ -1,7 +1,7 @@
 from classes.AbstractCrud import AbstractCrud
-from classes.PermutasCrud import PermutasCrud
+from classes.Crud import Crud
 
-class Sdia(AbstractCrud, PermutasCrud):
+class Sdia(AbstractCrud, Crud):
 
     arquivo = 'sdia.json'
     banco = 'data.db'
@@ -37,7 +37,7 @@ class Sdia(AbstractCrud, PermutasCrud):
     def inserir(self):
         protocolo = self.protocolo
 
-        banco_permutas = PermutasCrud(self.banco)
+        banco_permutas = Crud(self.banco)
         banco_permutas.conectar_banco()
         banco_permutas.criar_tabela()
 

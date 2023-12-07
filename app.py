@@ -1,7 +1,7 @@
 import quickstart as main
 from classes.Permutas import Permuta
 from classes.Sdia import Sdia
-from classes.PermutasCrud import PermutasCrud
+from classes.Crud import Crud
 
 def get_sdias():
     lista_sdias = main.main('bancoAIM!A:BZ')  
@@ -30,38 +30,38 @@ def get_permutas():
         except Exception as err: print(err)
 
 def ler_permutas(id=None):
-    permutas = PermutasCrud().consultar_permutas(id)
+    permutas = Crud().consultar_permutas(id)
     print(permutas)
 
     return permutas
 
 def ler_sdias(id=None):
-    permutas = PermutasCrud().consultar_sdias(id)
+    permutas = Crud().consultar_sdias(id)
     print(permutas)
 
     return permutas
 
 def excluir_permuta(selecionado):
     item_selecionado = int(selecionado)
-    permuta = PermutasCrud()
+    permuta = Crud()
     permuta.excluir_registro(item_selecionado)
 
 def excluir_sdia(selecionado):
-    sdia = PermutasCrud()
+    sdia = Crud()
     sdia.excluir_sdia(selecionado)
 
 def alterar_permuta(selecionado, item_alterar, novo_valor):
     item_selecionado = int(selecionado)
     dicionario = {item_alterar: novo_valor}
     
-    item_para_alterar = PermutasCrud()
+    item_para_alterar = Crud()
     item_para_alterar.atualizar_registro(item_selecionado, dicionario, 'permutas', 'id')
 
 def alterar_sdia(selecionado, item_alterar, novo_valor):
     item_selecionado = str(selecionado)
     dicionario = {item_alterar: novo_valor}
     
-    item_para_alterar = PermutasCrud()
+    item_para_alterar = Crud()
     item_para_alterar.atualizar_registro(item_selecionado, dicionario, 'sdia', 'protocolo')
 
 

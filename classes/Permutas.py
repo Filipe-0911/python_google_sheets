@@ -1,7 +1,7 @@
 from classes.AbstractCrud import AbstractCrud
-from classes.PermutasCrud import PermutasCrud
+from classes.Crud import Crud
 
-class Permuta(AbstractCrud, PermutasCrud):
+class Permuta(AbstractCrud, Crud):
 
     arquivo = 'permutas.json'
     banco = 'data.db'
@@ -18,7 +18,7 @@ class Permuta(AbstractCrud, PermutasCrud):
     def inserir(self):
         filtrar_por = self.data_da_troca
 
-        banco_permutas = PermutasCrud(self.banco)
+        banco_permutas = Crud(self.banco)
         banco_permutas.conectar_banco()
         banco_permutas.criar_tabela()
 

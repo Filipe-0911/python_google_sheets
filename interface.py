@@ -1,14 +1,13 @@
 import tkinter as tk
 from app import *
-from classes.PermutasCrud import PermutasCrud
-from tkinter import ttk
+from classes.Crud import Crud
 from tkinter import *
 from ttkthemes import ThemedStyle
 
 def on_button_click():
     get_permutas()
 
-    conecta_permuta = PermutasCrud()
+    conecta_permuta = Crud()
     conecta_permuta.conectar_banco()
     permutas = conecta_permuta.consultar_permutas()
 

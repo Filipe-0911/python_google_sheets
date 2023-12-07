@@ -2,9 +2,9 @@ import os
 import json
 import os.path
 from abc import ABC
-from classes.PermutasCrud import PermutasCrud
+from classes.Crud import Crud
 
-class AbstractCrud(ABC, PermutasCrud):
+class AbstractCrud(ABC, Crud):
 
     def detalhar(self):
         return self.__dict__
@@ -24,14 +24,14 @@ class AbstractCrud(ABC, PermutasCrud):
     def __gravar_arquivo(self):
 
         if self.arquivo == 'permutas.json':
-            banco = PermutasCrud(self.banco)
+            banco = Crud(self.banco)
             banco.conectar_banco()
             banco.criar_tabela()
             banco.inserir_registro(self.detalhar())
             banco.desconectar_banco()
 
         if self.arquivo == 'sdia.json':
-            banco = PermutasCrud(self.banco)
+            banco = Crud(self.banco)
             banco.conectar_banco()
             banco.criar_tabela()
             banco.inserir_sdia(self.detalhar())

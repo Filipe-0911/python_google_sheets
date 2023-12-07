@@ -1,7 +1,7 @@
 import sqlite3
 import os.path
 
-class PermutasCrud:
+class Crud:
     def __init__(self, nome_banco='data.db'):
         pasta_raiz = os.path.dirname(os.path.dirname(__file__))
         pasta_db = os.path.join(pasta_raiz, 'database')
