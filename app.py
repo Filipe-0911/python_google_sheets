@@ -67,4 +67,4 @@ def alterar_sdia(selecionado, item_alterar, novo_valor):
 
 # ler_sdias('b184b36c')
 # excluir_sdia('b184b36c')
-# alterar_sdia('b184b36c', 'localidade', 'SBYS')
+# alterar_sdia('b184b36c', 'LOCALIDADE', 'SBYS')

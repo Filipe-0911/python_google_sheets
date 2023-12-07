@@ -7,8 +7,6 @@ class Crud:
         pasta_db = os.path.join(pasta_raiz, 'database')
         caminho_banco = os.path.join(pasta_db, nome_banco)
 
-        print(caminho_banco)
-
         self.nome_banco = caminho_banco
         self.conectar_banco()
 

@@ -1,10 +1,7 @@
-import os
-import json
 import os.path
-from abc import ABC
 from classes.Crud import Crud
 
-class AbstractCrud(ABC, Crud):
+class AbstractCrud(Crud):
 
     def detalhar(self):
         return self.__dict__
