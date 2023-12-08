@@ -1,4 +1,5 @@
 # Programa python que interage com google sheets
+### Projeto criado nos padrões do PEP8. [O que é PEP8?](https://wiki.python.org.br/GuiaDeEstilo)
 
 Criei este programa com o objetivo de facilitar alguns processos feitos no meu local de trabalho.
 
