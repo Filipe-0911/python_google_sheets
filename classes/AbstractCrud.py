@@ -1,4 +1,3 @@
-import os.path
 from classes.Crud import Crud
 
 class AbstractCrud(Crud):
