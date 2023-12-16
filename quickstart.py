@@ -42,7 +42,13 @@ def main(local_leitura):
         .get(spreadsheetId=SAMPLE_SPREADSHEET_ID, range=SAMPLE_RANGE_NAME)
         .execute()
     )
+    
     values = result.get("values", [])
+    max_cols = len(values[0]) if values else 0
+
+    for row in values:
+        while len(row) < max_cols:
+            row.append("")
 
     if not values:
       print("No data found.")

@@ -8,8 +8,8 @@ class Sdia(AbstractCrud, Crud):
     
     def __init__(self, data_insercao, protocolo, data_recebimento, operador, localidade,
                   quem_originou, assunto, data_efetivacao, esclarecimento=0, telefone=0, 
-                  email=0, retornou_ica=0, observacoes='', 
-                  a1='',a2='',a3='',a4='',a5='',a6='',a7='',a8='',a9=''):
+                  email=0, retornou_ica=0, observacoes=None, 
+                  a1=None,a2=None,a3=None,a4=None,a5=None,a6=None,a7=None,a8=None,a9=None, opr2=None, status_do_processo=None, ultima_att=None):
         self.data_insercao = data_insercao
         self.protocolo = protocolo
         self.data_recebimento = data_recebimento
@@ -32,6 +32,9 @@ class Sdia(AbstractCrud, Crud):
         self.a7 = a7
         self.a8 = a8
         self.a9 = a9
+        self.opr2 = opr2
+        self.status_do_processo = status_do_processo
+        self.ultima_att = ultima_att
 
 
     def inserir(self):

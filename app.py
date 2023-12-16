@@ -8,14 +8,16 @@ def get_sdias():
     del lista_sdias[0]
     del lista_sdias[0]
 
+    
     for sdia in lista_sdias:
+        print(len(sdia))
         dados_sdia = Sdia(sdia[0],sdia[1],sdia[2],sdia[6],
                      sdia[7],  sdia[8],  sdia[9],  sdia[10],
                      sdia[12], sdia[15], sdia[18], sdia[21],
                      sdia[23], sdia[24], sdia[25], sdia[26],
                      sdia[27], sdia[28], sdia[29], sdia[30], 
-                     sdia[31], sdia[32])
-        
+                     sdia[31], sdia[32], sdia[33], sdia[34], sdia[35])
+
         try: dados_sdia.inserir()
         except Exception as err: print(err)
 

@@ -62,7 +62,10 @@ class Crud:
                 a6 TEXT,
                 a7 TEXT,
                 a8 TEXT,
-                a9 TEXT
+                a9 TEXT,
+                opr2 TEXT,
+                status_do_processo TEXT,
+                ultima_att TEXT
 
             )
         ''')
@@ -77,9 +80,9 @@ class Crud:
 
     def inserir_sdia(self, sdia):
         self.cursor.execute('''
-            INSERT INTO sdia (protocolo, data_insercao, data_recebimento, operador, localidade, quem_originou, assunto, data_efetivacao, esclarecimento, telefone, email, retornou_ica, observacoes, a1, a2, a3, a4, a5, a6, a7, a8, a9)
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-        ''', (sdia['protocolo'], sdia['data_insercao'], sdia['data_recebimento'], sdia['operador'], sdia['localidade'], sdia['quem_originou'], sdia['assunto'], sdia['data_efetivacao'], sdia['esclarecimento'], sdia['telefone'], sdia['email'], sdia['retornou_ica'], sdia['observacoes'], sdia['a1'], sdia['a2'], sdia['a3'], sdia['a4'], sdia['a5'], sdia['a6'], sdia['a7'], sdia['a8'], sdia['a9']))
+            INSERT INTO sdia (protocolo, data_insercao, data_recebimento, operador, localidade, quem_originou, assunto, data_efetivacao, esclarecimento, telefone, email, retornou_ica, observacoes, a1, a2, a3, a4, a5, a6, a7, a8, a9, opr2, status_do_processo, ultima_att)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+        ''', (sdia['protocolo'], sdia['data_insercao'], sdia['data_recebimento'], sdia['operador'], sdia['localidade'], sdia['quem_originou'], sdia['assunto'], sdia['data_efetivacao'], sdia['esclarecimento'], sdia['telefone'], sdia['email'], sdia['retornou_ica'], sdia['observacoes'], sdia['a1'], sdia['a2'], sdia['a3'], sdia['a4'], sdia['a5'], sdia['a6'], sdia['a7'], sdia['a8'], sdia['a9'], sdia['opr2'], sdia['status_do_processo'], sdia['ultima_att']))
         self.conn.commit()
 
     def consultar_permutas(self, data_da_troca=None):
