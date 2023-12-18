@@ -17,9 +17,9 @@ def on_button_click():
     return permutas
 
 def on_button_sdia_click():
-    get_sdias()
+    qtidadde_sdias = get_sdias()
 
-    label2['text'] = 'SDIAS cadastradas no banco!'
+    label2['text'] = f"{qtidadde_sdias} SDIA's registrados no banco"
 
 root = tk.Tk()
 

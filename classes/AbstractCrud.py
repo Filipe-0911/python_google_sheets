@@ -9,7 +9,6 @@ class AbstractCrud(Crud):
 
         self.__gravar_arquivo()
 
-        print('Registro Cadastrado com sucesso')
 
     def alterar(self):
         print(self)
@@ -18,17 +17,23 @@ class AbstractCrud(Crud):
         print('Registro Alterado com sucesso')
 
     def __gravar_arquivo(self):
+        
+        dados = self.arquivo.split('.')
 
-        if self.arquivo == 'permutas.json':
+        if dados[0] == 'permutas':
             banco = Crud(self.banco)
             banco.conectar_banco()
             banco.criar_tabela()
             banco.inserir_registro(self.detalhar())
             banco.desconectar_banco()
+            
+            print(f'Permuta do(a) {self.proponente} cadastrada com sucesso')
 
-        if self.arquivo == 'sdia.json':
+        if dados[0] == 'sdia':
             banco = Crud(self.banco)
             banco.conectar_banco()
             banco.criar_tabela()
             banco.inserir_sdia(self.detalhar())
             banco.desconectar_banco()
+            
+            print(f'SDIA {self.protocolo} Cadastrado com sucesso')

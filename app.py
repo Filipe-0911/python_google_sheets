@@ -8,9 +8,7 @@ def get_sdias():
     del lista_sdias[0]
     del lista_sdias[0]
 
-    
     for sdia in lista_sdias:
-        print(len(sdia))
         dados_sdia = Sdia(sdia[0],sdia[1],sdia[2],sdia[6],
                      sdia[7],  sdia[8],  sdia[9],  sdia[10],
                      sdia[12], sdia[15], sdia[18], sdia[21],
@@ -20,6 +18,8 @@ def get_sdias():
 
         try: dados_sdia.inserir()
         except Exception as err: print(err)
+        
+    return len(lista_sdias)
 
 def get_permutas():
     LISTA_PERMUTAS = main.main('permutas!A:G')
@@ -38,10 +38,10 @@ def ler_permutas(id=None):
     return permutas
 
 def ler_sdias(id=None):
-    permutas = Crud().consultar_sdias(id)
-    print(permutas)
+    sdia = Crud().consultar_sdias(id)
+    # print(sdia)
 
-    return permutas
+    return sdia
 
 def excluir_permuta(selecionado):
     item_selecionado = int(selecionado)
