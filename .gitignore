@@ -1,7 +1,9 @@
 # Ignore cache folders
 __pycache__/
-*/__pycache__/
+**/__pycache__/
 classes/__pycache__/
+*/classes/__pycache__/
+
 
 # Ignore specific folders
 database/
