@@ -47,8 +47,9 @@ class Sdia(AbstractCrud, Crud):
         produtoDuplicado = banco_permutas.consultar_sdias(protocolo)
 
         if produtoDuplicado:
-            print()
-            print('Já existe um produto com esse código!')
+            mensagem = f"Já existe um SDIA com o código {protocolo}!"
+            print(mensagem)
+            return mensagem
         else: 
             super().inserir()
 

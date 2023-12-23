@@ -93,7 +93,6 @@ class Crud:
         return self.cursor.fetchall()
     
     def consultar_sdias(self, protocolo=None):
-        print(protocolo)
         if protocolo:
             self.cursor.execute('SELECT * FROM sdia WHERE protocolo=?', (protocolo,))
         else: 
