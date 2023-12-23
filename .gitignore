@@ -15,10 +15,11 @@ auth/
 db_json/
 database/
 __pycache__/
+**/__pycache__/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
-*.py[cod]
+**.py[cod]
 
 # C extensions
 *.so

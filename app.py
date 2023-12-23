@@ -10,7 +10,7 @@ def get_sdias():
 
     
     for sdia in lista_sdias:
-        print(len(sdia))
+        # print(len(sdia))
         dados_sdia = Sdia(sdia[0],sdia[1],sdia[2],sdia[6],
                      sdia[7],  sdia[8],  sdia[9],  sdia[10],
                      sdia[12], sdia[15], sdia[18], sdia[21],
