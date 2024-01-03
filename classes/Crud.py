@@ -40,19 +40,27 @@ class Crud:
         ''')
 
         self.cursor.execute('''
-            CREATE TABLE IF NOT EXISTS sdia (
+            CREATE TABLE IF NOT EXISTS aim1 (
                 protocolo TEXT PRIMARY KEY,
                 data_insercao TEXT,
                 data_recebimento TEXT,
-                operador TEXT,
-                localidade TEXT,
+                mes INTEGER,
+                operador1 TEXT,
+                operador2 TEXT,
+                operador3 TEXT,
+                operador4 TEXT,
+                localidades TEXT,
                 quem_originou TEXT,
                 assunto TEXT,
                 data_efetivacao TEXT,
-                esclarecimento INTEGER,
-                telefone INTEGER,
-                email INTEGER,
-                retornou_ica  INTEGER,
+                esclarecimento BOOLEAN,
+                esclarecimento_quantidade INTEGER,
+                telefone BOOLEAN,
+                telefone_quantidade INTEGER,
+                email BOOLEAN,
+                email_quantidade INTEGER,
+                retornou_ica  BOOLEAN,
+                retornou_ica_quantidade  INTEGER,
                 observacoes TEXT,
                 a1 TEXT,
                 a2 TEXT,
@@ -63,7 +71,6 @@ class Crud:
                 a7 TEXT,
                 a8 TEXT,
                 a9 TEXT,
-                opr2 TEXT,
                 status_do_processo TEXT,
                 ultima_att TEXT
 
@@ -80,9 +87,9 @@ class Crud:
 
     def inserir_sdia(self, sdia):
         self.cursor.execute('''
-            INSERT INTO sdia (protocolo, data_insercao, data_recebimento, operador, localidade, quem_originou, assunto, data_efetivacao, esclarecimento, telefone, email, retornou_ica, observacoes, a1, a2, a3, a4, a5, a6, a7, a8, a9, opr2, status_do_processo, ultima_att)
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-        ''', (sdia['protocolo'], sdia['data_insercao'], sdia['data_recebimento'], sdia['operador'], sdia['localidade'], sdia['quem_originou'], sdia['assunto'], sdia['data_efetivacao'], sdia['esclarecimento'], sdia['telefone'], sdia['email'], sdia['retornou_ica'], sdia['observacoes'], sdia['a1'], sdia['a2'], sdia['a3'], sdia['a4'], sdia['a5'], sdia['a6'], sdia['a7'], sdia['a8'], sdia['a9'], sdia['opr2'], sdia['status_do_processo'], sdia['ultima_att']))
+            INSERT INTO aim1 (protocolo, data_insercao, data_recebimento, mes, operador1, operador2, operador3, operador4, localidades, quem_originou, assunto, data_efetivacao, esclarecimento, esclarecimento_quantidade, telefone, telefone_quantidade, email, email_quantidade, retornou_ica, retornou_ica_quantidade, observacoes, a1, a2, a3, a4, a5, a6, a7, a8, a9, status_do_processo, ultima_att)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+        ''', (sdia['protocolo'], sdia['data_insercao'], sdia['data_recebimento'], sdia['mes'], sdia['operador1'], sdia['operador2'], sdia['operador3'], sdia['operador4'], sdia['localidades'], sdia['quem_originou'], sdia['assunto'], sdia['data_efetivacao'], sdia['esclarecimento'], sdia['esclarecimento_quantidade'], sdia['telefone'], sdia['telefone_quantidade'], sdia['email'], sdia['email_quantidade'], sdia['retornou_ica'], sdia['retornou_ica_quantidade'], sdia['observacoes'], sdia['a1'], sdia['a2'], sdia['a3'], sdia['a4'], sdia['a5'], sdia['a6'], sdia['a7'], sdia['a8'], sdia['a9'], sdia['status_do_processo'], sdia['ultima_att']))
         self.conn.commit()
 
     def consultar_permutas(self, data_da_troca=None):
@@ -94,14 +101,15 @@ class Crud:
     
     def consultar_sdias(self, protocolo=None):
         if protocolo:
-            self.cursor.execute('SELECT * FROM sdia WHERE protocolo=?', (protocolo,))
+            self.cursor.execute('SELECT * FROM aim1 WHERE protocolo=?', (protocolo,))
         else: 
-            self.cursor.execute('SELECT * FROM sdia')
+            self.cursor.execute('SELECT * FROM aim1')
 
         return self.cursor.fetchall()
 
+    # corrigir nome banco aim1
     def atualizar_registro(self, registro_id, modificacoes, banco, parametro_busca):
-        
+        # banco = self.banco
         if not modificacoes:
             print("Nada a ser atualizado.")
             return
@@ -125,6 +133,17 @@ class Crud:
         self.conn.commit()
 
     def excluir_sdia(self, registro_id):
-        self.cursor.execute('DELETE FROM sdia WHERE protocolo=?', (registro_id,))
-        print("SDIA excluída do banco.")
-        self.conn.commit()
+        banco_permutas = Crud()
+        produto_encontrado = banco_permutas.consultar_sdias(registro_id)
+        if produto_encontrado:
+            self.cursor.execute('DELETE FROM aim1 WHERE protocolo=?', (registro_id,))
+            self.conn.commit()
+            
+            mensagem = f"SDIA {registro_id} excluída do banco."
+            print(mensagem)
+            return mensagem
+        
+        else:
+            mensagem = f"SDIA {registro_id} não está cadastrada!"
+            print(mensagem)
+            return mensagem
