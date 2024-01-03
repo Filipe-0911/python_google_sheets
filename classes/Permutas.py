@@ -26,6 +26,6 @@ class Permuta(AbstractCrud, Crud):
 
         if produtoDuplicado:
             print()
-            print('Já existe um produto com esse código!')
+            print(f'Já existe uma permuta com estas características: Proponente {self.proponente}, Proposto {self.proposto} do dia {self.proponente_sai_do_turno}!')
         else: 
             super().inserir()

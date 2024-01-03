@@ -1,22 +1,26 @@
 import quickstart as main
 from classes.Permutas import Permuta
-from classes.Sdia import Sdia
+from classes.Aim1 import AIM1
 from classes.Crud import Crud
 
 def get_sdias():
     lista_sdias = main.main('bancoAIM!A:BZ')  
     del lista_sdias[0]
-    del lista_sdias[0]
+    del lista_sdias[0]    
 
     for sdia in lista_sdias:
-        dados_sdia = Sdia(sdia[0],sdia[1],sdia[2],sdia[6],
-                     sdia[7],  sdia[8],  sdia[9],  sdia[10],
-                     sdia[12], sdia[15], sdia[18], sdia[21],
-                     sdia[23], sdia[24], sdia[25], sdia[26],
-                     sdia[27], sdia[28], sdia[29], sdia[30], 
-                     sdia[31], sdia[32], sdia[33], sdia[34], sdia[35])
+        dados_sdia = AIM1(sdia[0],sdia[1],sdia[2],sdia[3],
+                     sdia[4], sdia[5],  sdia[6],  sdia[7],
+                     sdia[8], sdia[9], sdia[10], sdia[11],
+                     sdia[12], sdia[13], sdia[15], sdia[16],
+                     sdia[16], sdia[18], sdia[19], sdia[21], 
+                     sdia[24], sdia[25], sdia[26], sdia[27], 
+                     sdia[28], sdia[29], sdia[30], sdia[31], 
+                     sdia[32], sdia[33], sdia[34], sdia[35])
 
-        try: dados_sdia.inserir()
+        try: 
+            dados_sdia.inserir()
+            
         except Exception as err: print(err)
         
     return len(lista_sdias)
@@ -39,7 +43,7 @@ def ler_permutas(id=None):
 
 def ler_sdias(id=None):
     sdia = Crud().consultar_sdias(id)
-    # print(sdia)
+    print(sdia)
 
     return sdia
 
@@ -64,9 +68,9 @@ def alterar_sdia(selecionado, item_alterar, novo_valor):
     dicionario = {item_alterar: novo_valor}
     
     item_para_alterar = Crud()
-    item_para_alterar.atualizar_registro(item_selecionado, dicionario, 'sdia', 'protocolo')
+    item_para_alterar.atualizar_registro(item_selecionado, dicionario, 'aim1', 'protocolo')
 
 
-# ler_sdias('b184b36c')
-# excluir_sdia('b184b36c')
-# alterar_sdia('b184b36c', 'LOCALIDADE', 'SBYS')
+# ler_sdias('46a0b83f')
+# excluir_sdia('46a0b83f')
+# alterar_sdia('46a0b83f', 'localidades', 'SDRK')
