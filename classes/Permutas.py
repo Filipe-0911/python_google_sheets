@@ -25,7 +25,8 @@ class Permuta(AbstractCrud, Crud):
         produtoDuplicado = banco_permutas.consultar_permutas(filtrar_por)
 
         if produtoDuplicado:
-            print()
-            print(f'Já existe uma permuta com estas características: Proponente {self.proponente}, Proposto {self.proposto} do dia {self.proponente_sai_do_turno}!')
+            mensagem = f'Já existe uma permuta com estas características: Proponente {self.proponente}, Proposto {self.proposto} do dia {self.proponente_sai_do_turno}!'
+            print(mensagem)
+            return mensagem
         else: 
             super().inserir()
